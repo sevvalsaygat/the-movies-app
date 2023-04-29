@@ -1,6 +1,6 @@
 import { Application } from '@layouts';
 import { useGetMovies } from '@hooks';
-import { MovieType } from '@/types';
+import { MovieType } from '@types';
 import { MovieCard } from '@components';
 
 export default function Home() {
