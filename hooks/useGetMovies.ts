@@ -1,16 +1,9 @@
 import { useAxios } from '@hooks';
 import { useQuery, UseQueryResult } from 'react-query';
-import { MovieType } from '@types';
-
-type UseGetMoviesResponseType = {
-  results: MovieType[];
-  page: number;
-  total_pages: number;
-  total_results: number;
-};
+import { UseGetMoviesResponseType } from '@types';
 
 type UseGetMoviesParamsType = {
-  with_genres?: number;
+  with_genres?: string;
 };
 
 export default function useGetMovies(

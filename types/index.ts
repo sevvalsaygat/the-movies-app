@@ -24,4 +24,11 @@ type UseGetGenresResponseType = {
   genres: GenreType[];
 };
 
-export type { GenreType, MovieType, UseGetGenresResponseType };
+type UseGetMoviesResponseType = {
+  results: MovieType[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+};
+
+export type { GenreType, MovieType, UseGetGenresResponseType, UseGetMoviesResponseType };
