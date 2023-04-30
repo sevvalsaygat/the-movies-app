@@ -8,7 +8,7 @@ export default function GenresTopBar({}: GenresTopBarType) {
   const { genres } = useGenres();
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 overflow-x-auto p-8">
       {genres.map((genre: GenreType) => (
         <Link
           className="px-2 bg-indigo-500 text-white font-semibold rounded flex items-center shadow-lg text-center"
