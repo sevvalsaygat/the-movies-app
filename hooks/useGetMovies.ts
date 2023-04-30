@@ -1,5 +1,6 @@
-import { useAxios } from '@hooks';
 import { useQuery, UseQueryResult } from 'react-query';
+
+import { useAxios } from '@hooks';
 import { UseGetMoviesResponseType } from '@types';
 
 type UseGetMoviesParamsType = {

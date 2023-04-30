@@ -1,8 +1,9 @@
-import { Application } from '@layouts';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import { Application } from '@layouts';
 import { useGetMovies } from '@hooks';
 import { MovieList } from '@components';
-import { useEffect } from 'react';
 
 export default function Home() {
   const router = useRouter();

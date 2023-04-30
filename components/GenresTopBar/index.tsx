@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import { useGenres } from '@hooks';
 import { GenreType } from '@types';
-import Link from 'next/link';
 
 type GenresTopBarType = {};
 
