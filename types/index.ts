@@ -20,4 +20,15 @@ type MovieType = {
   vote_count: number;
 };
 
-export type { GenreType, MovieType };
+type UseGetGenresResponseType = {
+  genres: GenreType[];
+};
+
+type UseGetMoviesResponseType = {
+  results: MovieType[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+};
+
+export type { GenreType, MovieType, UseGetGenresResponseType, UseGetMoviesResponseType };

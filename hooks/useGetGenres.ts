@@ -1,10 +1,7 @@
-import { useAxios } from '@hooks';
 import { useQuery, UseQueryResult } from 'react-query';
-import { GenreType } from '@types';
 
-type UseGetGenresResponseType = {
-  genres: GenreType[];
-};
+import { useAxios } from '@hooks';
+import { UseGetGenresResponseType } from '@types';
 
 export default function useGetGenres(props?: Record<string, any>): UseQueryResult<any, Error> {
   const axios = useAxios();
