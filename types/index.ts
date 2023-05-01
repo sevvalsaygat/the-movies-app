@@ -77,6 +77,43 @@ type MovieDetailsType = {
   vote_count: number;
 };
 
+type MovieImageBackdropType = {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: null | string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+};
+
+type MovieImageLogoType = {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string | null;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+};
+
+type MovieImagePosterType = {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string | null;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+};
+
+type UseGetMovieImagesResponseType = {
+  backdrops: MovieImageBackdropType[];
+  id: number;
+  logos: MovieImageLogoType[];
+  posters: MovieImagePosterType[];
+};
+
 export type {
   GenreType,
   MovieType,
@@ -86,4 +123,8 @@ export type {
   ProductionCompanyType,
   ProductionCountryType,
   SpokenLanguageType,
+  UseGetMovieImagesResponseType,
+  MovieImageBackdropType,
+  MovieImageLogoType,
+  MovieImagePosterType,
 };
