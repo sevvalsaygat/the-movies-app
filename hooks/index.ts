@@ -4,5 +4,6 @@ import useGetMovies from './useGetMovies';
 import useGenres from './useGenres';
 import useGetMovie from './useGetMovie';
 import useGetMovieImages from './useGetMovieImages';
+import useGetMovieSimilar from './useGetMovieSimilar';
 
-export { useAxios, useGetGenres, useGetMovies, useGenres, useGetMovie, useGetMovieImages };
+export { useAxios, useGetGenres, useGetMovies, useGenres, useGetMovie, useGetMovieImages, useGetMovieSimilar };

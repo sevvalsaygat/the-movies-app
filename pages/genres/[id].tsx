@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Application } from '@layouts';
 import { useGetMovies } from '@hooks';
 import { MovieList } from '@components';
 
 export default function Home() {
+  const [page, setPage] = useState<number>(1);
+
   const router = useRouter();
   const { id } = router.query;
 
@@ -13,13 +15,16 @@ export default function Home() {
     isLoading,
     isSuccess,
     data: moviesData,
+    isPreviousData,
     refetch,
   } = useGetMovies(
     {
       with_genres: id as string,
+      page,
     },
     {
       enabled: !!id,
+      keepPreviousData: true,
     },
   );
 
@@ -29,7 +34,13 @@ export default function Home() {
 
   return (
     <Application isLoading={isLoading}>
-      <MovieList isSuccess={isSuccess} moviesData={moviesData} />
+      <MovieList
+        setPage={setPage}
+        isPreviousData={isPreviousData}
+        page={page}
+        isSuccess={isSuccess}
+        moviesData={moviesData}
+      />
     </Application>
   );
 }

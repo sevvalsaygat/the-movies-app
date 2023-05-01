@@ -114,6 +114,13 @@ type UseGetMovieImagesResponseType = {
   posters: MovieImagePosterType[];
 };
 
+type UseGetMovieSimilarResponseType = {
+  page: number;
+  results: MovieType[];
+  total_pages: number;
+  total_results: number;
+};
+
 export type {
   GenreType,
   MovieType,
@@ -127,4 +134,5 @@ export type {
   MovieImageBackdropType,
   MovieImageLogoType,
   MovieImagePosterType,
+  UseGetMovieSimilarResponseType,
 };

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -7,10 +7,13 @@ import { ChatBubbleLeftEllipsisIcon, StarIcon } from '@heroicons/react/24/outlin
 
 import { buildMoviePosterPath } from '@utils';
 import { Application } from '@layouts';
-import { useGetMovie, useGetMovieImages } from '@hooks';
+import { useGetMovie, useGetMovieImages, useGetMovieSimilar } from '@hooks';
 import { GenreType, MovieImageBackdropType } from '@types';
+import { MovieList } from '@components';
 
 export default function Home() {
+  const [page, setPage] = useState<number>(1);
+
   const router = useRouter();
   const { id } = router.query;
 
@@ -43,6 +46,23 @@ export default function Home() {
     },
   );
 
+  const {
+    refetch: movieSimilarRefetch,
+    isLoading: movieSimilarIsLoading,
+    isSuccess: movieSimilarIsSuccess,
+    data: movieSimilar,
+    isPreviousData: movieSimilarIsPreviousData,
+  } = useGetMovieSimilar(
+    {
+      movieId: id as string,
+      page,
+    },
+    {
+      enabled: !!id,
+      keepPreviousData: true,
+    },
+  );
+
   useEffect(() => {
     movieRefetch();
   }, [id, movieRefetch]);
@@ -51,8 +71,12 @@ export default function Home() {
     movieImagesRefetch();
   }, [id, movieImagesRefetch]);
 
+  useEffect(() => {
+    movieSimilarRefetch();
+  }, [id, movieSimilarRefetch]);
+
   return (
-    <Application isLoading={movieIsLoading && movieImagesIsLoading}>
+    <Application isLoading={movieIsLoading && movieImagesIsLoading && movieSimilarIsLoading}>
       {movieIsError && <div>Could not found movie...</div>}
       {movieIsSuccess && (
         <div className="flex flex-col p-16">
@@ -111,6 +135,18 @@ export default function Home() {
                 )}
               </div>
             </div>
+          </div>
+          <div className="flex flex-col my-56 font-serif">
+            <h1 className="flex justify-center text-6xl text-blue-900 hover:text-blue-700 cursor-pointer">
+              Similar Movies
+            </h1>
+            <MovieList
+              setPage={setPage}
+              isPreviousData={movieSimilarIsPreviousData}
+              page={page}
+              isSuccess={movieSimilarIsSuccess}
+              moviesData={movieSimilar}
+            />
           </div>
         </div>
       )}
